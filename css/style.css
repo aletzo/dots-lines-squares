@@ -1,0 +1,81 @@
+body {
+    background: #222222;
+}
+div#wrapper {
+    height: 300px;
+    overflow: hidden;
+    margin: 30px auto;
+    position: relative;
+    width: 400px;
+}
+div#board {
+    background: #000000;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    width: 300px;
+}
+div#status {
+    height: 100px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    width: 80px;
+}
+div#status p.score1 {
+    color: #85CEFB;
+    font-size: 12px;
+}
+div#status p.score2 {
+    color: #97EF72;
+    font-size: 12px;
+}
+div.dot {  
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+}
+div.line {
+    position: absolute;
+    z-index: 9;
+}
+div.line.horizontal {
+    height: 2px;
+    width: 30px;
+}
+div.line.vertical {
+    height: 30px;
+    width: 2px;
+}
+div.square {
+    height: 30px;
+    position: absolute;
+    width: 30px;
+    z-index: 8;
+}
+div.dot span {
+    color: #555555;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    margin: 5px;
+    position: relative;
+    text-align: center;
+    width: 20px;
+    z-index: 10;
+}
+div.dot span.joined {
+}
+div.dot span.selected {
+    color: #E5EDE6;
+}
+div.dot span.neighbor {
+    color: #D1854B;
+}
+div.dot span.hover {
+    color: #E5EDE6;
+}
