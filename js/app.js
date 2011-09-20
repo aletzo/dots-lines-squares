@@ -79,20 +79,22 @@ function joinNeighbors(n1X, n1Y, n2X, n2Y) {
     n1.addClass('joined');
     n2.addClass('joined');
     
+    _changePlayer = false;
+    
     if (n1X > n2X) {
-        drawLine(n2X, n2Y, 'vertical');
+        _changePlayer = drawLine(n2X, n2Y, 'vertical');
     }
     
     if (n1X < n2X) {
-        drawLine(n1X, n1Y, 'vertical');
+        _changePlayer = drawLine(n1X, n1Y, 'vertical');
     }    
     
     if (n1Y < n2Y) {
-        drawLine(n1X, n1Y, 'horizontal');
+        _changePlayer = drawLine(n1X, n1Y, 'horizontal');
     }    
 
     if (n1Y > n2Y) {
-        drawLine(n2X, n2Y, 'horizontal');
+        _changePlayer = drawLine(n2X, n2Y, 'horizontal');
     }        
     
     squaresBefore = squaresCount;
@@ -104,7 +106,7 @@ function joinNeighbors(n1X, n1Y, n2X, n2Y) {
     $('span').removeClass('selected');
     $('span').removeClass('neighbor');
     
-    if (squaresAfter == squaresBefore) {
+    if (squaresAfter == squaresBefore && _changePlayer == true) {
         turn = turn == 1 ? 2 : 1;
     }
     
@@ -126,6 +128,9 @@ function getY(id) {
 }
 
 function drawLine(_x, _y, _orientation) {
+    if ($('#' + _x + '_' + _y + '_' + _orientation).length) {
+        return false;
+    }
     _top = 30 * (_x - 1) + 15;
     
     _left = 30 * (_y - 1) + 15;
@@ -135,6 +140,8 @@ function drawLine(_x, _y, _orientation) {
     }
     
     $('#board').append('<div id="' + _x + '_' + _y + '_' + _orientation + '" class="' + _orientation + ' line" style="background:' + colors[turn] + ';left:' + _left + 'px;top:' + _top + 'px"></div>');   
+    
+    return true;
 }
 
 function findSquares() {
